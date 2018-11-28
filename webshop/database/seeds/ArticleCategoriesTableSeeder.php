@@ -11,6 +11,32 @@ class ArticleCategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('articles')->insert([
+            [
+                'name' => "",
+                'price' => "",
+                'description' => "",
+            ],
+            [
+                'name' => "",
+                'price' => "",
+                'description' => "",
+            ],
+            [
+                'name' => "",
+                'price' => "",
+                'description' => "",
+            ],
+            [
+                'name' => "",
+                'price' => "",
+                'description' => "",
+            ],
+            [
+                'name' => "",
+                'price' => "",
+                'description' => "",
+            ]
+        ])
     }
 }
