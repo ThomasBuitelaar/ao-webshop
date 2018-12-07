@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Ao Shopping Cart
+    Ao Shopping Cart - Home
 @endsection
 
 @section('content')

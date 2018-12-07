@@ -15,7 +15,7 @@
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Fish</a>
+          <a class="dropdown-item" href="{{ url('/categories') }}">Fish</a>
           <a class="dropdown-item" href="#">Gun</a>
       </li>
     </ul>
