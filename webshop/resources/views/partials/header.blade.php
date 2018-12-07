@@ -8,6 +8,10 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="http://ao-webshop.local/">Home <span class="sr-only">(current)</span></a>
+       
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/categories') }}">Categories </a>
       </li>
       <li class="nav-item dropdown">
       <!-- The Categories dropdown menu -->
@@ -15,7 +19,7 @@
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ url('/categories') }}">Fish</a>
+          <a class="dropdown-item" href="#">Fish</a>
           <a class="dropdown-item" href="#">Gun</a>
       </li>
     </ul>
