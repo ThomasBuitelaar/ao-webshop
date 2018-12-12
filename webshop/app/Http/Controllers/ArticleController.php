@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
-use App\Cart
+use App\Cart;
 use App\Category;
 use Auth;
 
