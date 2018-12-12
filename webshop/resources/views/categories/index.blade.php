@@ -15,10 +15,10 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($categories as $product)
+        @foreach($categories as $article)
             <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->name}}</td>
+                <td>{{$article->id}}</td>
+                <td>{{$article->name}}</td>
             </tr>
         @endforeach
         </tbody>

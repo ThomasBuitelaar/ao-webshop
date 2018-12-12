@@ -11,6 +11,7 @@
     integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
     crossorigin="anonymous">
       <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
+      <link rel="stylesheet" href="{{ URL::to('src/css/style.css') }}">
 
     @yield('styles')
 </head>

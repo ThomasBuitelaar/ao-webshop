@@ -1,15 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Article;
-use App\category_product;
+use App\Cart
 use App\Category;
-use App\Cart;
-use App\Order;
-use App\Orderline;
-use Session;
 use Auth;
 
 class ArticleController extends Controller
