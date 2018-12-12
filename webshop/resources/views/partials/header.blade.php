@@ -13,6 +13,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/categories') }}">Categories </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/articles') }}">Articles </a>
+      </li>
       <li class="nav-item dropdown">
       <!-- The Categories dropdown menu -->
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
