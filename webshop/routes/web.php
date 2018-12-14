@@ -17,6 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/shopping-cart/delete/{id}', 'ArticleController@deleteItemFromShoppingCart');
+Route::get('/shopping-cart/remove-one/{id}', 'ArticleController@removeOneFromShoppingCart');
+Route::get('/shopping-cart/add-one/{id}', 'ArticleController@addOneToShoppingCart');
+Route::get('/articles/cat/{id}', 'ArticleController@articlesByCat');
+Route::get('/add-to-cart/{id}', 'ArticleController@addOneToShoppingCart');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('categories', 'CategoryController');
 Route::resource('articles', 'ArticleController');
+Route::get('/shopping-cart', 'ArticleController@getCart');
+
+
