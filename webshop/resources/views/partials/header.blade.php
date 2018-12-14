@@ -16,6 +16,8 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/articles') }}">Articles </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/shopping-cart') }}">Shopping cart </a>
       <li class="nav-item dropdown">
       <!-- The Categories dropdown menu -->
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,10 +55,14 @@
     </ul>
 
                     @else
-                        <a href="{{ route('login') }}">Login </a>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('login') }}">Login </a>
+                    </li>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register </a>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('register') }}">Register </a>
+                        </li>
                         @endif
                     @endauth
                 </div>
