@@ -1,7 +1,7 @@
 @extends('layouts.master', ['categories' => $categories])
 
 @section('title')
-    Ao Shopping Cart - Categories
+    Ao Webshop - Categories
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
         @foreach($categories as $article)
             <tr>
                 <td>{{$article->id}}</td>
-                <td>{{$article->name}}</td>
+                <td><a href="#">{{$article->name}}</a></td>
             </tr>
         @endforeach
         </tbody>
