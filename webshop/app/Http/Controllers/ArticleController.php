@@ -22,6 +22,7 @@ class ArticleController extends Controller
     {
         $categories = Category::all();
         $articles = Article::orderBy('id', 'desc')->get();
+        //dd($articles[0]->imagePath);
         return view('articles.index')->with(compact('articles', 'categories'));
     } 
     
@@ -52,15 +53,15 @@ public function store(Request $request)
         'description' => 'required',
         'price' => 'required',
         'discount' => 'required',
-        'image_url' => 'image|nullable|max:1999'
+        'imagePath' => 'image|nullable|max:1999'
     ]);
-    if($request->hasFile('image_url')){
+    if($request->hasFile('imagePath')){
         //save file
-        $filenameWithExtension = $request->file('image_url')->getClientOriginalName();
+        $filenameWithExtension = $request->file('imagePath')->getClientOriginalName();
         $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
-        $extension = $request->file('image_url')->getClientOriginalExtension();
+        $extension = $request->file('imagePath')->getClientOriginalExtension();
         $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        $path = $request->file('image_url')->storeAs('public/images', $fileNameToStore);
+        $path = $request->file('imagePath')->storeAs('public/images', $fileNameToStore);
     }else{
         $fileNameToStore = 'noimage.jpg';
     }
@@ -69,7 +70,7 @@ public function store(Request $request)
     $article->description = $request->description;
     $article->price = $request->price;
     $article->discount = $request->discount;
-    $article->image_url = $fileNameToStore;
+    $article->imagePath = $fileNameToStore;
     $article->save();
     foreach($request->categories as $category):
         $cat_prod = new category_article;
@@ -112,13 +113,13 @@ public function edit($id)
  */
 public function update(Request $request, $id)
 {
-    if($request->hasFile('image_url')){
+    if($request->hasFile('imagePath')){
         //save file
-        $filenameWithExtension = $request->file('image_url')->getClientOriginalName();
+        $filenameWithExtension = $request->file('imagePath')->getClientOriginalName();
         $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
-        $extension = $request->file('image_url')->getClientOriginalExtension();
+        $extension = $request->file('imagePath')->getClientOriginalExtension();
         $fileNameToStore = $filename.'_'.time().'.'.$extension;
-        $path = $request->file('image_url')->storeAs('public/images', $fileNameToStore);
+        $path = $request->file('imagePath')->storeAs('public/images', $fileNameToStore);
     }else{
         $fileNameToStore = 'noimage.jpg';
     }
@@ -127,7 +128,7 @@ public function update(Request $request, $id)
     $article->description = $request->description;
     $article->price = $request->price;
     $article->discount = $request->discount;
-    $article->image_url = $fileNameToStore;
+    $article->imagePath = $fileNameToStore;
     $article->save();
     $categories = category_article::where('article_id', $id)->get();
     foreach($request->categories as $category):
