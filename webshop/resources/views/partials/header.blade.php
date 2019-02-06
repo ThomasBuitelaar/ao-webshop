@@ -18,15 +18,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/shopping-cart') }}">Shopping cart </a>
-      <li class="nav-item dropdown">
-      <!-- The Categories dropdown menu -->
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Fish</a>
-          <a class="dropdown-item" href="#">Gun</a>
-      </li>
+        </li>
     </ul>
     <form class="form-inline my-2 my-lg-0 col-order-1">
     <!-- Checking if there is a user logged in, if not show the login or sign up options -->
