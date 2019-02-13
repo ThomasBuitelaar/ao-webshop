@@ -13,7 +13,7 @@
                         <div class="float-right">
                             <a class="btn btn-danger btn-sm" href="/shopping-cart/delete/{{$key}}">Delete item</a>
                             <a class="btn btn-warning btn-sm" href="/shopping-cart/remove-one/{{$key}}"><i class="fas fa-minus"></i></a>
-                            <p style="displau:inline;">{{$article['qty']}}</p>
+                            <p style="display:inline;">{{$article['qty']}}</p>
                             <a class="btn btn-success btn-sm" href="/shopping-cart/add-one/{{$key}}"><i class="fas fa=plus"></i></a>
                         </div>
                     </li>

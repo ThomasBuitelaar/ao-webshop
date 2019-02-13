@@ -8,7 +8,7 @@ class Cart
     public $totalQty = 0;
     public $totalPrice = 0;
 
-    public function __construct($oldCart)
+   /* public function __construct($oldCart)
     {
         if($oldCart){
             $this->item = $oldCart->items;
@@ -16,6 +16,7 @@ class Cart
             $this->totalPrice = $oldCart->totalPrice;
         }
     }
+    */
    
 
     public function add($item, $id){
@@ -32,6 +33,24 @@ class Cart
         
         $this->item[$id] = $storedItem;
         $this->totalQty++;
-        $this->totalPrice += $newPrice;
     }
+   /* public function addItem($id){
+        //Get data from session
+        $sessionData = Session::all();
+        //Put in local items
+        $sessionData = $Items['$id', '$ammount'];
+        //Als Items nog leeg is -> ken lege array toe aan local Items
+        
+        //Als Id al voor komt in Items -> Bijbehorende ammount ophogen
+        
+        //Anders -> new cartItem aanmaken
+        
+        //En toevoegen aan local Items
+        
+        //Put items -> session
+        
+
+    }
+    */
 }
+
