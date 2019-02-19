@@ -34,23 +34,37 @@ class Cart
         $this->item[$id] = $storedItem;
         $this->totalQty++;
     }
-   /* public function addItem($id){
+        public function addItem($id){
         //Get data from session
         $sessionData = Session::all();
         //Put in local items
-        $sessionData = $Items['$id', '$ammount'];
+        $sessionData = $Items
         //Als Items nog leeg is -> ken lege array toe aan local Items
-        
+        if($Item = NULL){
+            $LItem =  array[];
+        }
         //Als Id al voor komt in Items -> Bijbehorende ammount ophogen
-        
+        elseif($item['id' => NULL]){
+            $item = [
+                "id" => "",
+                "ammount" => "",
+            ];
+        }
         //Anders -> new cartItem aanmaken
-        
+        else{
+            $object = new cartItem();
+            $object->[
+                "id"=>"itemId",
+                "ammount"=>"itemAmmount",
+            ];
+        }
         //En toevoegen aan local Items
-        
+        $item=> cartItem();
         //Put items -> session
-        
+        Session::put('id', 'item');
 
-    }
-    */
+        session(['id' => 'item'],['ammount' => 'itemAmmount']);
+
+        }
 }
 

@@ -8,7 +8,7 @@
     @foreach($articles as $article)
         <div class="col-4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img" src="/storage/images/{{$article->imagePath}}" alt="Card image cap">
+                <img class="card-img" src="{{ url('storage/images/'.$article->imagePath) }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{$article->name}}</h5>
                     <p class="card-text">&#8364; {{number_format($article->price)}}</p>
@@ -20,5 +20,5 @@
         </div>
     @endforeach
 </div>
-
+    
 @endsection

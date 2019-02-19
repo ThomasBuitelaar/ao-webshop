@@ -10,15 +10,13 @@
     <table class='table'>
         <thead class='thread-dark'>
             <tr>
-                <th scope='col'>#</th>
-                <th scope='col'>Name</th>
+                <th scope='col'>Categorie</th>
             </tr>
         </thead>
         <tbody>
         @foreach($categories as $article)
             <tr>
-                <td>{{$article->id}}</td>
-                <td><a href="#">{{$article->name}}</a></td>
+                <td><a href="/categories/{{$article->id}}">{{$article->name}}</a></td>
             </tr>
         @endforeach
         </tbody>
