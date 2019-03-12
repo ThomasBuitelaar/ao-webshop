@@ -41,7 +41,7 @@ class Cart
         $sessionData = $Items
         //Als Items nog leeg is -> ken lege array toe aan local Items
         if($Item = NULL){
-            $LItem =  array[];
+            $Item =  array[];
         }
         //Als Id al voor komt in Items -> Bijbehorende ammount ophogen
         elseif($item['id' => NULL]){
@@ -66,5 +66,14 @@ class Cart
         session(['id' => 'item'],['ammount' => 'itemAmmount']);
 
         }
+
+/**
+ * session_start();
+ * $cart = array();
+ * if(!isset($_SESSION['cart'])) {
+ * $_SESSION['cart']} = $cart;
+ * }else {
+ * array_push($cart,)}
+ */
 }
 

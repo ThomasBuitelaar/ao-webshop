@@ -42,7 +42,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        //check welke id er opgevraagt word
+        //haal informatie op van
     }
     /**
      * Show the form for editing the specified resource.
