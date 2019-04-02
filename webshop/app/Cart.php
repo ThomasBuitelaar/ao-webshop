@@ -1,79 +1,73 @@
 <?php
 
 namespace App;
+use Session
 
 class Cart
 {
-    public $item = null;
+    public $items;
     public $totalQty = 0;
     public $totalPrice = 0;
 
-   /* public function __construct($oldCart)
+    public function__construct()
     {
-        if($oldCart){
-            $this->item = $oldCart->items;
-            $this->totalQtf= $oldCart->totalQty;
-            $this->totalPrice = $oldCart->totalPrice;
-        }
-    }
-    */
-   
-
-    public function add($item, $id){
-        $itemPrice = $item->price;
-        
-        $storedItem = ['qty' => 0, 'price' => $itemPrice, 'item'=> $item, 'id' =>$id];
-        if($this->items){
-            if(array_key_exists($id, $this->items)){
-                $storedItem = $this->item[$id];
+        if (Session::has('cart')) {
+            if (Session::get('cart')->totalQty <= 0) {
+                Session::forget('cart');
+            }else{
+                // Possibly put the following in an object. (joost)
+                $this->items = Session::get('cart')->items;
+                $this->totalQty = Session::get('cart')->totalQty;
+                $this->totalPrice = Session::get('cart')->totalPrice;
             }
         }
-
-        $storedItem['qty']++;
-        
-        $this->item[$id] = $storedItem;
-        $this->totalQty++;
     }
-        public function addItem($id){
-        //Get data from session
-        $sessionData = Session::all();
-        //Put in local items
-        $sessionData = $Items
-        //Als Items nog leeg is -> ken lege array toe aan local Items
-        if($Item = NULL){
-            $Item =  array[];
-        }
-        //Als Id al voor komt in Items -> Bijbehorende ammount ophogen
-        elseif($item['id' => NULL]){
-            $item = [
-                "id" => "",
-                "ammount" => "",
-            ];
-        }
-        //Anders -> new cartItem aanmaken
-        else{
-            $object = new cartItem();
-            $object->[
-                "id"=>"itemId",
-                "ammount"=>"itemAmmount",
-            ];
-        }
-        //En toevoegen aan local Items
-        $item=> cartItem();
-        //Put items -> session
-        Session::put('id', 'item');
 
-        session(['id' => 'item'],['ammount' => 'itemAmmount']);
+// Add a product to the shopping cart
+public function add($item, $id){
+    $itemPrice = $item->product_price;
+    // Calculate discounted price
+    if ($item->product_discount_precentage !== null){
+        $itemPrice = $itemPrice - ($itemPrice * ($item->product_discount_percentage/100));
+    }
+    // Array where the items in the cart will be stored
+    $storedItem = ['qty' => 0, 'price' => $itemPrice, 'item'=> $item];
+if ($this->items){
+    if (array_key_exists($id, $this->items)) {
+        $storedItem = $this->items[$id];
+    }
+}
+$storedItem['qty']++;
+$storedItem['price'] = $itemPrice *  $storedItem['qty'];
+$this->items[$id] = $storedItem;
+$this->totalQty++;
+$this->totalPrice += $itemPrice;
+Session::put('cart', $this);
+}
 
-        }
+// Remove items from the cart
+public function remove($item, $id, $removeAll) {
+    $itemPrice = $item->product_price;
+//Calculating discount price again
+ if ($item->product_discount_percentage !== null) {
+        $itemPrice = $itemPrice - ($itemPrice * ($item->product_discount_percentage/100));
+    }
+$storedItem = ['qty' => $this->items[$id]['qty'], 'price' => $this->items[$id]['price'], 'item' => $item];
+if ($this->items) {
+    if (array_key_exists($id, $this->items)) {
+        $item = $this->items[$id];
+    }
+}
 
-/**
- * session_start();
- * $cart = array();
- * if(!isset($_SESSION['cart'])) {
- * $_SESSION['cart']} = $cart;
- * }else {
- * array_push($cart,)}
- */
+// Removing all or one product form the cart
+if($removeAll == true) {
+    $itemPrice = $itemPrice * $storedItem['qty'];
+    $this->totalPrice -= $itemPrice;
+    if ($stopredItem['qty'] <= 0) {
+        unset($this->item[$id]);
+    }
+}
+Session::put('cart', $this);
+}
 }
 
