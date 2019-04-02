@@ -18,6 +18,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $categories = Category::all();
@@ -46,6 +47,7 @@ public function create()
  * @param  \Illuminate\Http\Request  $request
  * @return \Illuminate\Http\Response
  */
+
 public function store(Request $request)
 {
     $this->validate($request, [
@@ -86,6 +88,7 @@ public function store(Request $request)
  * @param  int  $id
  * @return \Illuminate\Http\Response
  */
+
 public function show($id)
 {
     $categories = Category::all();
@@ -98,6 +101,7 @@ public function show($id)
  * @param  int  $id
  * @return \Illuminate\Http\Response
  */
+
 public function edit($id)
 {
     $categories = Category::all();
@@ -111,6 +115,7 @@ public function edit($id)
  * @param  int  $id
  * @return \Illuminate\Http\Response
  */
+
 public function update(Request $request, $id)
 {
     if($request->hasFile('imagePath')){
@@ -145,6 +150,7 @@ public function update(Request $request, $id)
  * @param  int  $id
  * @return \Illuminate\Http\Response
  */
+
 public function destroy($id)
 {
     $article = Article::find($id);
@@ -156,6 +162,7 @@ public function destroy($id)
     $article->delete();
     return redirect('/articles');
 }
+
 public function getAddToCart(Request $request, $id){
     $article = Article::find($id);
     $oldCart = Session::has('cart') ? Session::get('cart') : null;
@@ -164,6 +171,7 @@ public function getAddToCart(Request $request, $id){
     $request->session()->put('cart', $cart);
     return redirect('/articles');
 }
+
 public function removeOneFromShoppingCart($id)
 {
     if(Session::has('cart')){
@@ -177,6 +185,7 @@ public function removeOneFromShoppingCart($id)
         return redirect('/shopping-cart');
     }
 }
+
 public function addOneToShoppingCart(Request $request, $id)
 {
     $article = Article::find($id);
@@ -186,6 +195,7 @@ public function addOneToShoppingCart(Request $request, $id)
     $request->session()->put('cart', $cart);
     return redirect('/shopping-cart');
 }
+
 public function deleteItemFromShoppingCart($id)
 {
     if(Session::has('cart')){
@@ -199,6 +209,7 @@ public function deleteItemFromShoppingCart($id)
         return redirect('/shopping-cart');
     }
 }
+
 public function getCart()
 {
     $categories = Category::all();
