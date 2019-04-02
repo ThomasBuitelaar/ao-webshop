@@ -31,4 +31,4 @@
 
 @endif
     <br><a href="/articles" class="btn btn-primary">Continue shopping</a>
-@endsection
+@endsection 
