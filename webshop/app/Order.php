@@ -11,7 +11,7 @@ class Order extends Model
     // Timestamps
     public $timestamps = true;
     // Relate to Product modal
-    public function products(){
+    public function products() {
     	return $this->belongsToMany('App\Product', 'order_product', 'order_id_fk', 'product_id_fk')->withPivot('quantity', 'price');
     }
 }

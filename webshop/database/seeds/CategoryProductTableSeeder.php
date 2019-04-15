@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
-class ClientsTableSeeder extends Seeder
+class CategoryProductTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

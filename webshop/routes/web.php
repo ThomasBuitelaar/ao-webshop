@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,22 +9,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('shops.index');
-});
-
 Auth::routes();
-
-Route::get('/shopping-cart/delete/{id}', 'ArticleController@deleteItemFromShoppingCart');
-Route::get('/shopping-cart/remove-one/{id}', 'ArticleController@removeOneFromShoppingCart');
-Route::get('/shopping-cart/add-one/{id}', 'ArticleController@addOneToShoppingCart');
-Route::get('/articles/cat/{id}', 'ArticleController@articlesByCat');
-Route::get('/add-to-cart/{id}', 'ArticleController@addOneToShoppingCart');
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('categories', 'CategoryController');
-Route::resource('articles', 'ArticleController');
-Route::get('/shopping-cart', 'ArticleController@getCart');
-
-
+Route::get('/', 'ProductsController@index');
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('/categories', 'CategoriesController@index');
+Route::get('/orders', 'OrdersController@index');
+Route::get('/clients/edit', 'ClientsController@edit');
+Route::get('/clients/edit-billing-address', 'ClientsController@editBillingAddress')->name('clients.editBillingAddress');
+Route::put('/clients/{id}/updateBillingAddress', 'ClientsController@updateBillingAddress')->name('clients.updateBillingAddress');
+Route::get('/clients/edit-shipping-address', 'ClientsController@editShippingAddress')->name('clients.editShippingAddress');
+Route::put('/clients/{id}/updateShippingAddress', 'ClientsController@updateShippingAddress')->name('clients.updateShippingAddress');
+Route::get('/shopping-cart', 'CartController@getCart')->name('product.shoppingCart');
+Route::get('/add-to-cart/{id}', 'CartController@addToCart')->name('product.addToCart');
+Route::get('/remove-one-from-cart/{id}', 'CartController@removeOneCartItem')->name('product.removeOneCartItem');
+Route::get('/remove-all-from-cart/{id}', 'CartController@removeCartItems')->name('product.removeCartItems');
+Route::resource('products', 'ProductsController');
+Route::resource('categories', 'CategoriesController');
+Route::resource('orders', 'OrdersController');
+Route::resource('clients', 'ClientsController');
+Route::get('users/{user}', 'UsersController@edit')->name('users.edit');
+Route::patch('users/{user}/update', 'UsersController@update')->name('users.update');

@@ -11,7 +11,7 @@ class Client extends Model
     // Timestamps
     public $timestamps = true;
     // Relate to category modal
-    public function user(){
+    public function user() {
     	return $this->belongsTo('App\User');
     }
 }

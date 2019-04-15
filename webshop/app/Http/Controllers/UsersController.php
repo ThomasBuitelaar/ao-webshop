@@ -1,10 +1,19 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Category;
-use App\Product;
-class CategoryController extends Controller
+use Auth;
+use App\User;
+class UsersController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -12,11 +21,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('categories.index')->with('categories', $categories);
+        //
     }
     /**
-     * Show the form for creating a new resource. 
+     * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -42,29 +50,40 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //check welke id er opgevraagt word
-        //haal informatie op van
+        //
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $user = Auth::user();
+        return view('users.edit', compact('user'));
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required',
+            'surname' => 'required',
+            'email' => 'email|required|unique:users,email,'.$request->segment(2),
+            'password' => 'required|string|min:6|confirmed'
+        ]);
+        $user->name = request('name');
+        $user->surname = request('surname');
+        $user->email = request('email');
+        $user->password = bcrypt(request('password'));
+        $user->save();
+        return redirect('/dashboard')->with('success', 'Saved');
     }
     /**
      * Remove the specified resource from storage.

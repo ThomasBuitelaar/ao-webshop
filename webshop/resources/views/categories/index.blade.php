@@ -1,24 +1,10 @@
-@extends('layouts.master', ['categories' => $categories])
-
-@section('title')
-    Ao Webshop - Categories
-@endsection
+@extends('layouts.app')
 
 @section('content')
-    <h1>All Categories</h1>
-
-    <table class='table'>
-        <thead class='thread-dark'>
-            <tr>
-                <th scope='col'>Categorie</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($categories as $article)
-            <tr>
-                <td><a href="/categories/{{$article->id}}">{{$article->name}}</a></td>
-            </tr>
+    <h1>Categories</h1>
+    <ul>
+        @foreach($categories as $category)
+            <a href="/categories/{{$category->category_id}}"><li>{{$category->category_name}}</li></a>
         @endforeach
-        </tbody>
-    </table>
+    </ul>
 @endsection

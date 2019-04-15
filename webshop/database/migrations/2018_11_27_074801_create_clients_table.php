@@ -18,7 +18,6 @@ class CreateClientsTable extends Migration
             // Client Information
             $table->increments('client_id');
             $table->integer('user_id');
-            $table->forein('user_id')->referances('id')->on('users')->onDelete('cascade');
             $table->date('date_of_birth');
             $table->string('gender');
             $table->string('phone_number');
@@ -38,6 +37,7 @@ class CreateClientsTable extends Migration
             $table->string('shipping_street');
             $table->string('shipping_city');
             $table->string('shipping_country');
+            $table->timestamps();
         });
     }
 

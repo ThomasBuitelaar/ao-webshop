@@ -1,34 +1,62 @@
-@extends('layouts.master', ['categories' => $categories])
+@extends('layouts.app')
 
 @section('content')
-@if(Session::has('cart'))
-    <div class="row">
-        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <ul class="list-group">
-                @foreach($articles as $key => $article)
-                    <li class="list-group-item">
-
-                        <strong>{{$article['item']['name']}}</strong>
-                        <span class="badge badge-success">&#8364; {{$article['price']}}</span>
-                        <div class="float-right">
-                            <a class="btn btn-danger btn-sm" href="/shopping-cart/delete/{{$key}}">Delete item</a>
-                            <a class="btn btn-warning btn-sm" href="/shopping-cart/remove-one/{{$key}}"><i class="fas fa-minus"></i></a>
-                            <p style="display:inline;">{{$article['qty']}}</p>
-                            <a class="btn btn-success btn-sm" href="/shopping-cart/add-one/{{$key}}"><i class="fas fa=plus"></i></a>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-            <p>Total price: {{$totalprice}}</p>
-            {{Form::open(['action' => 'OrderController@store', 'method' => 'POST'])}}
-                {{Form::submit('Place Order', ['class' => 'btn btn-secondary'])}}
-            </form>
-        </div>
+    <div class="shopping-cart">
+        <h1>Shopping cart</h1>
+        @if(Session::has('cart'))
+            <div class="row">
+                <div class="col-12">
+                    <ul class="list-group">
+                        @foreach($products as $product)
+                            <li class="list-group-item">
+                                <div class="col-7 float-left">
+                                    <strong>{{$product['item']['product_name']}}</strong>
+                                    &euro;{{number_format($product['price'], 2)}}
+                                    @if($product['item']['product_discount_percentage'] !== null)
+                                        <strong class="discount">{{$product['item']['product_discount_percentage']}}&#37;</strong>
+                                    @endif
+                                </div>
+                                <div class="col-5 float-right">
+                                    <div class="row">
+                                        <div class="input-group col-10">
+                                            <div class="input-group-prepend">
+                                                <a href="{{route('product.removeOneCartItem', ['id' => $product['item']['product_id']])}}" class="btn btn-outline-primary" title="Subtract" role="button">-</a>
+                                            </div>
+                                            <input type="text" class="form-control text-center border-color-primary" aria-label="Quantity" value="{{$product['qty']}}" disabled>
+                                            <div class="input-group-append">
+                                                <a href="{{route('product.addToCart', ['id' => $product['item']['product_id']])}}" class="btn btn-outline-primary col" title="Add" role="button">+</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <div class="row">
+                                                <a href="{{route('product.removeCartItems', ['id' => $product['item']['product_id']])}}" title="Remove" role="button" class="btn btn-outline-danger cart-delete-items">X</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-2">
+                    <strong>Total: &euro;{{number_format($totalPrice, 2)}}</strong>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <a role="button" href="/orders/create" class="btn btn-primary">Checkout</a>
+                </div>
+            </div>
+        @else
+            <div class="row">
+                <div class="col-12">
+                    <p>This shits empty</p>
+                    <h2>YEEEEEEEEEEEEEET!</h2>
+                </div>
+            </div>
+        @endif
     </div>
-
-@else
-    <h3>No items in your cart</h3>
-
-@endif
-    <br><a href="/articles" class="btn btn-primary">Continue shopping</a>
-@endsection 
+@endsection
