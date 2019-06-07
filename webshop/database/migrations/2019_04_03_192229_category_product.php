@@ -12,10 +12,8 @@ class CategoryProduct extends Migration
     public function up()
     {
         Schema::create('category_product', function (Blueprint $table) {
-            $table->integer('category_id_fk');
-            $table->foreign('category_id_fk')->references('category_id')->on('categories')->onDelete('cascade');
-            $table->integer('product_id_fk');
-            $table->foreign('product_id_fk')->references('product_id')->on('products')->onDelete('cascade');
+            $table->integer('category_id');
+            $table->integer('product_id');
         });
     }
     /**
@@ -27,4 +25,5 @@ class CategoryProduct extends Migration
     {
         Schema::dropIfExists('category_product');
     }
-}
+} 
+

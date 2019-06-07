@@ -12,6 +12,6 @@ class Category extends Model
 	public $timestamps = true;
 	// Related to product model
 	public function products() {
-		return $this->belongsToMany('App\Product', 'category_product', 'categroy_id_fk', 'product_id_fk');
+		return $this->morphToMany('App\Product', 'category_products', 'category_id', 'product_id');
 	}
 }

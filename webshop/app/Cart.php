@@ -23,7 +23,7 @@ class Cart
     }
 
 
-    public function calculateQtyAndPrice() {
+    private function calculateQtyAndPrice() {
         $this->totalQty = 0;
         $this->totalPrice = 0;
         foreach($this->items as $item) {

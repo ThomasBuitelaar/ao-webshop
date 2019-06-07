@@ -53,8 +53,7 @@
         @else
             <div class="row">
                 <div class="col-12">
-                    <p>This shits empty</p>
-                    <h2>YEEEEEEEEEEEEEET!</h2>
+                    <p>This cart is empty.</p>
                 </div>
             </div>
         @endif
