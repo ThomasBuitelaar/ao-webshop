@@ -13,7 +13,9 @@
 				<a href="/products/{{$product->product_id}}"><h5 class="card-title">{{$product->product_name}}</h5></a>
 				@if($product->product_discount_percentage != null)
 				<div class="row">
-					<p class="old-price col-6">&euro; {{number_format($product->product_price, 2)}}</p>
+
+					<p class="old-price col-6" style="text-decoration: line-through;">&euro; {{number_format($product->product_price, 2)}}</p>
+					
 					<p class="text-right col-6">&euro; {{number_format($product->product_price - ($product->product_price * ($product->product_discount_percentage/100)), 2)}}</p>
 				</div>
 				@else

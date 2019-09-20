@@ -17,7 +17,7 @@ class CartController extends Controller
         }
         return view('shopping-cart.index', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
-    // Get add to shopping cart
+    // Get add to shopping cart (add id check)
     public function addToCart(Request $request, $id) {
         $product = Product::find($id);
         $cart = new Cart();

@@ -11,10 +11,10 @@
                             <li class="list-group-item">
                                 <div class="col-7 float-left">
                                     <strong>{{$product['item']['product_name']}}</strong>
-                                    &euro;{{number_format($product['price'], 2)}}
-                                    @if($product['item']['product_discount_percentage'] !== null)
+                                  
                                         <strong class="discount">{{$product['item']['product_discount_percentage']}}&#37;</strong>
-                                    @endif
+                                        &euro;{{number_format($product['price'], 2)}}
+
                                 </div>
                                 <div class="col-5 float-right">
                                     <div class="row">

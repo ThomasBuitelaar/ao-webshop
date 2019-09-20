@@ -7,6 +7,7 @@ class CreateCategoriesTable extends Migration
     /**
      * Run the migrations.
      *
+     * cat_id naar id
      * @return void
      */
     public function up()
